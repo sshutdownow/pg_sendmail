@@ -13,6 +13,11 @@ sudo make install
 4. Register extension in PostgreSQL:
 CREATE EXTENSION pg_sendmail;
 
+Usage:
+------
+To send mail wrapper function sendmail(text mailfrom, text rcpto, text subject, text msg_body) is very convinient to use, for example:
+SELECT sendmail('me@somedomain.com', 'goodfriens@anotherdomain.com', 'test mail', E'mail message\nalso one line');
+
 ### Copyright
 
   Copyright (c) 2017 Igor Popov
