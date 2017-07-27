@@ -1,8 +1,8 @@
 # pg_sendmail
 initial commit
 
-pg_sendmail is [PostgreSQL](https://www.postgresql.org/) extension that implements mail function that rely on sendmail binary.
-There are some working examples that implement similar functionality in Perl or TCL. But perl add about 20Megs to every postgresql proccess and if it is the only one function in perl, you, perhaps, prefer my way.
+pg_sendmail is [PostgreSQL](https://www.postgresql.org/) extension that implements mail function that rely on sendmail binary, say, [ssmtp](https://packages.debian.org/stable/mail/ssmtp).
+There are some working examples that implement similar functionality in [Perl](https://ora2pg.darold.net/slides/ora2pg_the_hard_way.pdf#Example%20UTIL_SMTP) or [TCL](https://github.com/captbrando/pgMail). But perl add about 20Megs to every postgresql proccess and if it is the only one function in perl, you, perhaps, prefer my way.
 
 ### Copyright
 
