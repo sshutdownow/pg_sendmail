@@ -1,8 +1,17 @@
 # pg_sendmail
-initial commit
 
 pg_sendmail is [PostgreSQL](https://www.postgresql.org/) extension that implements mail function that rely on sendmail binary, say, [ssmtp](https://packages.debian.org/stable/mail/ssmtp).
 There are some working examples that implement similar functionality in [Perl](https://ora2pg.darold.net/slides/ora2pg_the_hard_way.pdf#Example%20UTIL_SMTP) or [TCL](https://github.com/captbrando/pgMail). But perl add about 20Megs to every postgresql proccess and if it is the only one function in perl, you, perhaps, prefer my way.
+
+Installation
+------------
+1. Download and unpack.
+2. Compile source code, to fullfill it for RedHat/CentOS postgresql-devel package is required (yum install postgresql-devel), for Debian/Ubuntu you should install postgresql-server-dev package (apt-get install postgresql-server-dev):
+make
+3. Install:
+sudo make install
+4. Register extension in PostgreSQL:
+CREATE EXTENSION pg_sendmail;
 
 ### Copyright
 
