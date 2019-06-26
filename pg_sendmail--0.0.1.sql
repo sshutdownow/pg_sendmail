@@ -23,7 +23,7 @@ CREATE OR REPLACE FUNCTION sendmail(
   begin
        result = (select mail(  mailfrom,
                             rcptto,
-                            convert_from(convert_to(subject, 'utf-8'), 'latin-1')::text,
+                            '=?UTF-8?B?' || encode(convert_from(convert_to(subject, 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=',
                             convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
                             E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit'));
 	return result;
