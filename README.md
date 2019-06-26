@@ -7,20 +7,20 @@ Installation
 ------------
 1. Download and unpack.
 2. Compile source code, to fullfill it for RedHat/CentOS postgresql-devel package is required (yum install postgresql-devel), for Debian/Ubuntu you should install postgresql-server-dev package (apt-get install postgresql-server-dev):
-make
+`make`
 3. Install:
-sudo make install
+`sudo make install`
 4. Register extension in PostgreSQL:
-CREATE EXTENSION pg_sendmail;
+`CREATE EXTENSION pg_sendmail;`
 
 Usage:
 ------
 To send mail wrapper function sendmail(text mailfrom, text rcpto, text subject, text msg_body) is very convinient to use, for example:
-SELECT sendmail('me@somedomain.com', 'goodfriens@anotherdomain.com', 'test mail', E'mail message\nalso one line');
+`SELECT sendmail('fromme@somedomain.com', 'tomygoodfriend@anotherdomain.com', 'test mail', E'mail message\nalso one line');`
 
 ### Copyright
 
-  Copyright (c) 2017 Igor Popov
+  Copyright (c) 2017-2019 Igor Popov
 
 License
 -------
