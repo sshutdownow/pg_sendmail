@@ -44,7 +44,7 @@ CREATE OR REPLACE FUNCTION sendmail(
 		else 
 			subject_enc := '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj, 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
 		end if;
-	end loop
+	end loop;
   
   
        result = (select mail(  mailfrom,
