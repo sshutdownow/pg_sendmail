@@ -11,25 +11,27 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
+#    services:
+#      postgres:
+#        image: postgres:12
+#        env:
+#          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#        options: >-
+#          --health-cmd pg_isready
+#          --health-interval 10s
+#          --health-timeout 5s
+#          --health-retries 5
+#        ports:
+#          - 5432:5432
 
     steps:
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y postgresql postgresql-contrib
+        sudo apt install -y postgresql-server-dev libpq-dev
+#        sudo -u postgres psql -f setup.sql
     - uses: actions/checkout@v4
-#    - name: Setup PostgreSQL
-#      uses: tj-actions/install-postgresql@v3
-#      with:
-#        postgresql-version: 12
 #    - name: configure
 #      run: ./configure
     - name: make
