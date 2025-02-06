@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  PG_VER: 16    
+
 jobs:
   build:
 
