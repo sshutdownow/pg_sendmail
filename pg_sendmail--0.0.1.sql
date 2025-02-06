@@ -47,7 +47,7 @@ CREATE OR REPLACE FUNCTION sendmail(
 	end loop;
   
   
-       result = (select mail(  mailfrom,
+       result := (select mail(  mailfrom,
                             rcptto,
                             subject_enc,
                             convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
