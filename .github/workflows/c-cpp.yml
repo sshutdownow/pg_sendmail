@@ -34,10 +34,10 @@ jobs:
       run: sudo systemctl start postgresql.service
     - name: Add extension to PostgreSQL
       run: sudo -u postgres psql postgres -c "CREATE EXTENSION pg_sendmail"
-    - name: Test extension pg_sendmail
-      run: |
-        sudo apt install -y sendmail 
-        sudo -u postgres psql postgres -c "SELECT sendmail('psql@localhost', 'root@localhost', 'test mail', E'Hi.\nThis is test e-mail message.')"
+    - name: Install sendmail
+      run: sudo apt install -y sendmail
+    - name: Test extension pg_sendmail 
+      run: sudo -u postgres psql postgres -c "SELECT sendmail('psql@localhost', 'root@localhost', 'test mail', E'Hi.\nThis is test e-mail message.')"
 
 #      auto_tests:
 #        name: Auto Tests    
