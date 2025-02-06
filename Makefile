@@ -2,7 +2,7 @@
 EXTENSION = pg_sendmail
 
 # script files to install
-DATA = pg_sendmail--0.0.1.sql
+DATA = pg_sendmail--0.0.2.sql
 
 # our test script file (without extension)
 REGRESS = pg_sendmail_test
