@@ -39,7 +39,7 @@ Datum mail(PG_FUNCTION_ARGS)
 	char *from = NULL, *rcpto = NULL, *subject = NULL, *body_message =
 	    NULL, *headers = NULL;
 	FILE *sendmail;
-	char sendmail_cmd[1024];
+	char sendmail_cmd[1024] = {0};
 
 	/*  Get arguments.  If we declare our function as STRICT, then
 	   this check is superfluous. */
@@ -81,7 +81,7 @@ Datum mail(PG_FUNCTION_ARGS)
 	}
 
 	if (snprintf
-	    (sendmail_cmd, sizeof(sendmail_cmd), SENDMAIL_PATH " -f%s %s", from,
+	    (sendmail_cmd, sizeof(sendmail_cmd)-1, SENDMAIL_PATH " -f%s %s", from,
 	     rcpto) < 0) {
 		elog(ERROR, "mail: snprintf failed");
 		PG_RETURN_NULL();
