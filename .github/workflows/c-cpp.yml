@@ -15,12 +15,12 @@ jobs:
     - name: Setup PostgreSQL
       uses: tj-actions/install-postgresql@v3
       with:
-        postgresql-version: ${{ env.PG_VER }}
+        postgresql-version: ${{ github.PG_VER }}
     - name: Install Dependencies
       run: |
         sudo apt update
         sudo apt install -y postgresql postgresql-contrib postgresql-common
-        sudo apt install -y libpq-dev postgresql-server-dev-${{ env.PG_VER }}
+        sudo apt install -y libpq-dev postgresql-server-dev-${{ github.PG_VER }}
 #        sudo -u postgres psql -f setup.sql
     - uses: actions/checkout@v4
 #    - name: configure
