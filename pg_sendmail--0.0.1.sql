@@ -47,11 +47,12 @@ CREATE OR REPLACE FUNCTION sendmail(
 	  end loop;
   
   
-    result := (select mail( mailfrom,
+    select mail( mailfrom,
                             rcptto,
                             subject_enc,
                             convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
-                            E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit'));
+                            E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit') 
+            into result;
     return true;
   end;
   $BODY$
