@@ -29,7 +29,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y postgresql postgresql-contrib
-        sudo apt install -y postgresql-dev libpq-dev
+        sudo apt install -y libpq-dev postgresql-server-dev
 #        sudo -u postgres psql -f setup.sql
     - uses: actions/checkout@v4
 #    - name: configure
