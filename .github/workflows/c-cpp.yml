@@ -41,4 +41,4 @@ jobs:
     needs: build
     steps:
     - name: Check EXTENSION pg_sendmail
-      run: sudo -u postgres psql postgres -c "SELECT sendmail('nobody@localhost', 'root@localhost', 'test mail', E'Hi.\nThis is test e-mail message.');
+      run: sudo -u postgres psql postgres -c "SELECT sendmail('nobody@localhost', 'root@localhost', 'test mail', E'Hi.\nThis is test e-mail message.')"
