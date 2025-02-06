@@ -38,19 +38,20 @@ CREATE OR REPLACE FUNCTION sendmail(
   subject_enc text := null;
   begin
   	for str_part_subj in (select substring(subject from n for 20) from generate_series(1, length(subject), 20) n) loop
-		if subject_enc is not null then
-			subject_enc := subject_enc || E'\n ' || '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj , 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
-		else 
-			subject_enc := '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj, 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
-		end if;
-	end loop;
+		  if subject_enc is not null then
+			  subject_enc := subject_enc || E'\n ' || '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj , 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
+		  else 
+			  subject_enc := '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj, 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
+		  end if;
+	  end loop;
   
   
-       return (select mail( mailfrom,
+    (select mail( mailfrom,
                             rcptto,
                             subject_enc,
                             convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
                             E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit'));
+    return true;
   end;
   $BODY$
   LANGUAGE plpgsql VOLATILE
