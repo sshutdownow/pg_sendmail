@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Igor Popov <ipopovi@gmail.com>
+ * Copyright (c) 2017-2025 Igor Popov <ipopovi@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -90,7 +90,7 @@ Datum mail(PG_FUNCTION_ARGS)
 	sendmail = popen(sendmail_cmd, "w");
 	if (!sendmail) {
 		elog(ERROR, "mail: Could not execute mail delivery program");
-		PG_RETURN_BOOL(FALSE);
+		PG_RETURN_BOOL(false);
 	}
 
 	fprintf(sendmail, "To: %s\n", rcpto);
@@ -126,8 +126,8 @@ Datum mail(PG_FUNCTION_ARGS)
 
 	if ((ret != EX_OK) && (ret != EX_TEMPFAIL)) {
 		elog(ERROR, "mail: sendmail failed");
-		PG_RETURN_BOOL(FALSE);
+		PG_RETURN_BOOL(false);
 	}
 
-	PG_RETURN_BOOL(TRUE);
+	PG_RETURN_BOOL(true);
 }
