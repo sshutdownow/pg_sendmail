@@ -11,19 +11,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-#    services:
-#      postgres:
-#        image: postgres:16
-#        env:
-#          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-#        options: >-
-#          --health-cmd pg_isready
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
-#        ports:
-#          - 5432:5432
-
     steps:
     - name: Setup PostgreSQL
       uses: tj-actions/install-postgresql@v3
@@ -42,5 +29,5 @@ jobs:
       run: make
     - name: make check
       run: make check
-#    - name: make distcheck
-#      run: make distcheck
+    - name: make install
+      run: sudo make install
