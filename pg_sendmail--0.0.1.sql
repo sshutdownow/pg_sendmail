@@ -36,7 +36,6 @@ CREATE OR REPLACE FUNCTION sendmail(
   msg_body alias for $4;
   str_part_subj text;
   subject_enc text := null;
-  result boolean;
   begin
   	for str_part_subj in (select substring(subject from n for 20) from generate_series(1, length(subject), 20) n) loop
 		  if subject_enc is not null then
@@ -47,13 +46,11 @@ CREATE OR REPLACE FUNCTION sendmail(
 	  end loop;
   
   
-    select mail( mailfrom,
-                            rcptto,
-                            subject_enc,
-                            convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
-                            E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit') 
-            into result;
-    return true;
+    return mail(  mailfrom,
+                  rcptto,
+                  subject_enc,
+                  convert_from(convert_to(msg_body, 'utf-8'), 'latin-1')::text,
+                  E'MIME-Version: 1.0\nContent-Type: text/plain; charset=\"utf-8\"\nContent-Transfer-Encoding: 8bit');
   end;
   $BODY$
   LANGUAGE plpgsql VOLATILE
