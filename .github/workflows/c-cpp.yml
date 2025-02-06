@@ -22,7 +22,7 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install -y postgresql-server-dev-${{ env.PG_VER }}
+#        sudo apt install -y postgresql-server-dev-${{ env.PG_VER }}
 #        sudo apt install -y postgresql postgresql-contrib postgresql-common
 #        sudo apt install -y libpq-dev postgresql-server-dev-${{ env.PG_VER }}
 #        sudo -u postgres psql -f setup.sql
