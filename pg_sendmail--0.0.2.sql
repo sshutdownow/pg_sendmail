@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2019 Igor Popov <ipopovi@gmail.com>
+ * Copyright (c) 2017-2025 Igor Popov <ipopovi@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -38,12 +38,12 @@ CREATE OR REPLACE FUNCTION sendmail(
   subject_enc text := null;
   begin
   	for str_part_subj in (select substring(subject from n for 20) from generate_series(1, length(subject), 20) n) loop
-		  if subject_enc is not null then
+	    if subject_enc is not null then
 			  subject_enc := subject_enc || E'\n ' || '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj , 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
-		  else 
+	    else 
 			  subject_enc := '=?utf-8?B?' || encode(convert_from(convert_to(str_part_subj, 'utf-8'), 'latin-1')::bytea, 'base64')::text || '?=';
-		  end if;
-	  end loop;
+	    end if;
+	end loop;
   
   
     return mail(  mailfrom,
