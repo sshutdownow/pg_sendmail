@@ -16,11 +16,11 @@ Installation
 Usage:
 ------
 To send mail wrapper function sendmail(text mailfrom, text rcpto, text subject, text msg_body) is very convinient to use, for example:
-`SELECT sendmail('fromme@somedomain.com', 'tomygoodfriend@anotherdomain.com', 'test mail', E'mail message\nalso one line');`
+```SELECT sendmail('fromme@somedomain.com', 'tomygoodfriend@anotherdomain.com', 'test mail', E'mail message\nalso one line');```
 
 ### Copyright
 
-  Copyright (c) 2017-2019 Igor Popov
+  Copyright (c) 2017-2025 Igor Popov
 
 License
 -------
