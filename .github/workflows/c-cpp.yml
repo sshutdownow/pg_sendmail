@@ -34,3 +34,7 @@ jobs:
       run: make check
     - name: make install
       run: sudo make install
+    - name: Start PostgreSQL service
+      run: sudo systemctl start postgresql.service
+    - name: Add extension to PostgreSQL
+      run: sudo -u postgres psql postgres -c "CREATE EXTENSION pg_sendmail"
